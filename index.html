@@ -20,7 +20,18 @@
       </div>
     </div>
     <div class="pyg_content">
+      <!-- 轮播图 -->
+      <div class="pyg_banner">
+        <div class="mui-slider">
+          <div class="mui-slider-group mui-slider-loop pyg_indexBanner">
 
+          </div>
+          <!-- 轮播图小圆点 -->
+          <div class="mui-slider-indicator pyg_indexIndicator">
+
+          </div>
+        </div>
+      </div>
 
       <!-- 商品列表 -->
       <div class="pyg_goodList"></div>
@@ -47,7 +58,20 @@
       </nav>
     </div>
   </div>
-
+  <script type="text/template" id="bannerTemp">
+    <!-- 框架mui中前面和后面需要再此添加最后和最前的图片 所以内嵌each循环 -->
+    <div class="mui-slider-item mui-slider-item-duplicate"><a href="{{data[data.length-1].navigator_url}}"><img src="{{data[data.length-1].image_src}}" /></a></div>
+      {{each data value index}}
+        <div class="mui-slider-item"><a href="{{value.navigator_url}}"><img src="{{value.image_src}}" /></a></div>
+      {{/each}}
+    <div class="mui-slider-item mui-slider-item-duplicate"><a href="{{data[0].navigator_url}}"><img src="{{data[0].image_src}}" /></a></div>
+  </script>
+  <script type="text/template" id="indicatorTemp">
+    {{each data value index}}
+  <!-- 如果为第一个小圆点，则添加样式 -->
+      <div class="mui-indicator {{index==0?'mui-active':''}}"></div>
+    {{/each}}
+  </script>
   <script src="./lib/mui/js/mui.js"></script>
   <script src="./lib/zepto/zepto.js"></script>
   <script src="./lib/arttemplate/template-web.js"></script>
