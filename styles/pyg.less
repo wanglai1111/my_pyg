@@ -1,0 +1,35 @@
+//引入初始化样式
+@import './reset.less';
+.layout{
+  width: 100vw;
+  height: 100vh;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+//头部搜索框样式
+.pyg_header{
+  height: 45px;
+  padding: 5px;
+}
+//中间内容样式
+.pyg_content{
+  flex: 1;
+  overflow: scroll;
+ }
+
+//底部导航栏样式
+.pyg_footer{
+  height: 45px;
+   a:nth-of-type(3){
+     >span{
+     display:block;
+     }
+     span:nth-last-of-type(1){
+       font-size: 12px;
+     }
+   }
+}
