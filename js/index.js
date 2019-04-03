@@ -1,5 +1,6 @@
 $(()=>{
- banner()
+ banner();
+ list()
 })
 
 function banner() {
@@ -10,7 +11,7 @@ function banner() {
     success:result => { 
       //只有数据获取成功之后才会生成动态结构
       if (result.meta.status == 200) {
-         console.log(result);
+        //  console.log(result);
          //轮播图图片结构
          var html = template('bannerTemp',result)
          $('.pyg_indexBanner').html(html)
@@ -25,6 +26,22 @@ function banner() {
            interval:2000
          })
       }
+    }
+  })
+}
+
+function list() {
+  $.ajax({
+    type:'get',
+    url: 'home/goodslist',
+    dataType:'json',
+    success:result=>{ 
+      console.log(result);
+      //动态生成商品列表
+    var html = template('listTemp',result)
+    $('.pyg_goodsList').html(html)
+    console.log(html);
+    
     }
   })
 }
