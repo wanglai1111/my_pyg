@@ -1,6 +1,12 @@
-$(()=>{
+$(function(){
+   
  banner();
  list()
+//  阻止mui对点击事件的默认行为
+ mui('body').on('tap', 'a',function(e){
+   e.preventDefault()
+   window.top.location.href = this.href
+ })
 })
 
 function banner() {
@@ -8,7 +14,7 @@ function banner() {
     type: 'get',
     url: 'home/swiperdata',
     dataType: 'json',
-    success:result => { 
+    success:function(result){ 
       //只有数据获取成功之后才会生成动态结构
       if (result.meta.status == 200) {
         //  console.log(result);
@@ -35,7 +41,7 @@ function list() {
     type:'get',
     url: 'home/goodslist',
     dataType:'json',
-    success:result=>{ 
+    success:function(result){ 
       console.log(result);
       //动态生成商品列表
     var html = template('listTemp',result)
