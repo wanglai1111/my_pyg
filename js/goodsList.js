@@ -72,8 +72,8 @@ $(function () {
           renderData(function (result) {
             //如果数据极少 则需要判断 是否已加载完全部
             if (result.data.goods.length > 0) {
-              $('.goodslist').html(html)
               var html = template('goodlistTemp', result.data)
+               $('.goodslist').append(html)
               mui('#refreshContainer').pullRefresh().endPullupToRefresh();
             } else {
               mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
