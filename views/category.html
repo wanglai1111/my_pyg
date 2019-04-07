@@ -44,7 +44,7 @@
           <span class="mui-icon mui-icon-list"></span>
           <span class="mui-tab-label">分类</span>
         </a>
-        <a class="mui-tab-item" href="#tabbar-with-contact">
+        <a class="mui-tab-item" href="./views/goodsDetail.html">
           <span class="mui-icon-extra mui-icon-extra-cart"></span>
           <span class="mui-tab-label" style="font-size:12px">购物车</span>
         </a>
@@ -71,7 +71,7 @@
                 <div class="cate2_title">{{value.cat_name}}</div>
                 <div class="cate2_content">
                     {{each value.children v i}}
-                        <a href="goods_list.html?cid={{v.cat_id}}">
+                        <a href="goodsList.html?cid={{v.cat_id}}">
                             <img src="http://157.122.54.189:9094{{v.cat_icon}}"
                                 alt="">
                             <span>{{v.cat_name}}</span>

@@ -18,8 +18,6 @@ $(function(){
         // 如果超时，则再次发起ajax请求
         else{
             getCateList()
-            console.log(result);
-            
         }
     }
 
