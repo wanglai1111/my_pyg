@@ -68,55 +68,55 @@
       </div>
     </div>
   <!-- 说明性文字 -->
-  <div class="goodsName">{{goods_name}}</div>
-  <div class="goodsPrice">￥{{goods_price}}</div>
-  <ul class="goodsDesc">
-    <li>
-      <span>已选</span>
-      <span>白色</span>
-    </li>
-    <li>
-      <span>促销</span>
-      <span>是</span>
-    </li>
-    <li>
-      <span>送到</span>
-      <span>广州市</span>
-    </li>
-    <li>
-      <span>运费</span>
-      <span>免运费</span>
-    </li>
-  </ul>
-  <!-- 选项卡：标签页 -->
-  <div class="mui-content">
-    <div style="padding: 10px 10px;">
-      <div id="segmentedControl" class="mui-segmented-control">
-        <a class="mui-control-item mui-active" href="#item1">
-          图文详情
-        </a>
-        <a class="mui-control-item" href="#item2">
-          规格参数
-        </a>
-      </div>
-    </div>
-    <div>
-      <div id="item1" class="mui-control-content mui-active">
-        {{@goods_introduce}}
-      </div>
-      <div id="item2" class="mui-control-content goodsPara">
-        {{each attrs value index}}
-        <div>
-          <h3>{{value.attr_name.split('-')[0]}}</h3>
-          <div>
-            <span>{{value.attr_name.split('-')[1]}}</span>
-            <span>{{value.attr_value}}</span>
-          </div>
-        </div>
-        {{/each}}
-      </div>
-    </div>
-  </div>
+            <div class="goodsName">{{goods_name}}</div>
+            <div class="goodsPrice">￥{{goods_price}}</div>
+            <ul class="goodsDesc">
+                <li>
+                    <span>已选</span>
+                    <span>白色</span>
+                </li>
+                <li>
+                    <span>促销</span>
+                    <span>是</span>
+                </li>
+                <li>
+                    <span>送到</span>
+                    <span>广州市</span>
+                </li>
+                <li>
+                    <span>运费</span>
+                    <span>免运费</span>
+                </li>
+            </ul>
+            <!-- 选项卡：标签页 -->
+            <div class="mui-content">
+                <div style="padding: 10px 10px;">
+                    <div id="segmentedControl" class="mui-segmented-control">
+                        <a class="mui-control-item mui-active" href="#item1">
+                            图文详情
+                        </a>
+                        <a class="mui-control-item" href="#item2">
+                            规格参数
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div id="item1" class="mui-control-content mui-active">
+                        {{@goods_introduce}}
+                    </div>
+                    <div id="item2" class="mui-control-content goodsPara">
+                        {{each attrs value index}}
+                            <div>
+                                <h3>{{value.attr_name.split('-')[0]}}</h3>
+                                <div>
+                                    <span>{{value.attr_name.split('-')[1]}}</span>
+                                    <span>{{value.attr_value}}</span>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
 
   </script>
   <script src="../lib/mui/js/mui.min.js"></script>
