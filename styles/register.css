@@ -1,0 +1,11 @@
+.pyg_content {
+  margin-top: 50px;
+}
+.pyg_content .verification {
+  position: relative;
+}
+.pyg_content .verification #pyg_code {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

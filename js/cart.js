@@ -113,5 +113,38 @@ $(function () {
         init()
        })
      //点击生成订单按钮，生成订单页面
-     
+     $('.orderform').on('tap','a',function () {
+       //参数
+       var order = {
+         'order_price':total,
+         'consignee_addr': $('.ares').text(),
+         'goods':[]
+       }
+       //声明个变量存储模板内的数据
+       var allOrders = $('.orderlist')
+       //循环遍历
+       allOrders.each(function (index,value) {
+         var singer = {}
+         //获取模板数据
+         var temp = $(value).data('order')
+         //赋值
+         singer.goods_id=temp.goods_id
+         singer.goods_number=temp.amount
+         singer.goods_price = temp.goods_price
+         //追加到goods中
+         order.goods.push(singer)
+       })
+       console.log(order);
+       //发送ajax请求
+       $.ajax({
+         type:'post',
+         url: 'my/orders/create',
+         data:order,
+         dataType:'json',
+         success:function (result) {
+           console.log(result);
+           location.href='./orderlist.html'
+         }
+       })
+     })
       })
