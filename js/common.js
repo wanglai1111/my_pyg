@@ -12,6 +12,11 @@ $(function(){
         $('body').addClass('loadding')
         //拼接url
         obj.url = baseURL + obj.url
+        // 判断 有my的 就加请求头 Authoriz.,.. token 
+        if (obj.url.indexOf('/my/')!=-1) {
+            //设置请求头
+            xhr.setRequestHeader('Authorization',sessionStorage.getItem('pyg_token'))
+        }
     }
 
     // complete：请求完成时触发

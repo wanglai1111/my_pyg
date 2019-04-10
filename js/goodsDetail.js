@@ -20,7 +20,7 @@ $(function () {
     data: $.getParameter(location.search),
     dataType: 'json',
     success: function (result) {
-      console.log(result);
+      // console.log(result);
       //赋值给info
       info.cat_id = 'result.cat_id'
       info.goods_id = 'result.goods_id'
@@ -30,7 +30,7 @@ $(function () {
       info.goods_small_logo = 'result.goods_small_logo'
       info.goods_weight = 'result.goods_weight'
       var html = template('sliderTemp', result.data)
-      console.log(html);
+      // console.log(html);
       //动态生成结构
       $('.mui-scroll').html(html)
       mui('.mui-slider').slider({
@@ -40,30 +40,38 @@ $(function () {
   })
 //点击购物车按钮 添加商品到购物车
  $('.btn-addCart').on('tap',function(){
-   console.log(111);
+  //  console.log(111);
    //声明个变量存储数据 采用临时存储对象sessionStorage存储
    var mytoken = sessionStorage.getItem('pyg_token')
-   console.log(mytoken);
+  //  console.log(mytoken);
    //用户操作界面成功一次就存在token，如果没有token 需要登陆
    if (!mytoken) {
      //登陆
      location.href ='./login.html?redirectUrl='+escape(location.href)
      //否则 不需要登陆 直接发送请求 从存储对象中获取数据
-   }else{
-     $.ajax({
-       type:'post',
-       url:'my/cart/add',
-       data:JSON.stringify(info),
-       dataType:'json',
-       success:function (result) {
-         //整个间隔时间如果太长需要重新登陆
+    }else{
+      $.ajax({
+        type:'post',
+        url:'my/cart/add',
+        data: {
+          info: JSON.stringify(info)
+        },
+        dataType:'json',
+        success:function (result) {
+          //整个间隔时间如果太长需要重新登陆
          if (result.meta.status == 401) {
             location.href = './login.html?redirectUrl=' + escape(location.href)
-         }else{
-           //否则出现提示成功;
-           alert('ok')
-           
-           
+         } else {
+           // 提示
+           mui.confirm('添加成功，是否查看购物车？', '温馨提示', ['跳转', '取消'], function (e) {
+             // index代表当前按钮的索引，索引从0开始
+             if (e.index == 0) {
+               // 跳转到购物车页面
+               console.log(111);
+               
+               location.href = 'cart.html'
+             } 
+           })
          }
        }
      })

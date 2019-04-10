@@ -34,7 +34,7 @@ $(function () {
         if (result.meta.status == 200) {
 
           //存储当前token
-          sessionStorage.setItem('pyg_token',result.data.token)
+          sessionStorage.setItem('pyg_token', result.data.token)
           //对url进行编码
           var re = $.getParameter(location.search).redirectUrl
           //判断是否跳转
